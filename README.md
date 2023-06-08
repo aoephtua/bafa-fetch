@@ -24,6 +24,8 @@ import { getRequests } from './bafa-fetch.mjs';
 const { data, status, error } = await getRequests({
     email: 'someone@example.com',
     password: '****'
+}, {
+    lang: 'de'
 });
 ```
 
@@ -34,21 +36,26 @@ See [example.mjs](src/example.mjs) to get an insight.
 
 ```json
 {
-    "vorgangsnummer": "...",
-    "kennzeichen": "...",
-    "status": { "key": "5", "description": "Proof of use in progress" },
-    "antragsteller": "Surname, First name",
-    "viewLink": "...",
-    "editLink": null,
-    "uploadLink": "https://fms.bafa.de/BafaFrame/upload?themenbereich=...&vorgangsnummer=...",
-    "submitVnLink": null,
-    "viewVnLink": "...",
-    "standort": "Postal code City, Adress line 1",
-    "antragsdatum": "YYYY-MM-DD",
-    "vnSubmitted": true,
-    "zwbDatum": "YYYY-MM-DD",
-    "isBevollmaechtigter": 0,
-    "bevollmaechtigter": 0
+    "count": 1,
+    "data": [
+        {
+            "vorgangsnummer": "...",
+            "kennzeichen": "...",
+            "status": { "key": "5", "description": "Proof of use in progress" },
+            "antragsteller": "Surname, First name",
+            "viewLink": "...",
+            "editLink": null,
+            "uploadLink": "https://fms.bafa.de/BafaFrame/upload?themenbereich=...&vorgangsnummer=...",
+            "submitVnLink": null,
+            "viewVnLink": "...",
+            "standort": "Postal code City, Adress line 1",
+            "antragsdatum": "YYYY-MM-DD",
+            "vnSubmitted": true,
+            "zwbDatum": "YYYY-MM-DD",
+            "isBevollmaechtigter": 0,
+            "bevollmaechtigter": 0
+        }
+    ]
 }
 ```
 

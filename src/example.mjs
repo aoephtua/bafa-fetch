@@ -1,7 +1,7 @@
 // Copyright (c) 2023, Thorsten A. Weintz. All rights reserved.
 // Licensed under the MIT license. See LICENSE in the project root for license information.
 
-import { getRequests, states } from './bafa-fetch.mjs';
+import { getRequests } from './bafa-fetch.mjs';
 
 /**
  * Ouputs message to the web console.
@@ -14,6 +14,8 @@ const log = console.log;
 const { data, status, error } = await getRequests({
     email: 'someone@example.com',
     password: '****'
+}, {
+    lang: 'de'
 });
 
 /**
@@ -22,13 +24,6 @@ const { data, status, error } = await getRequests({
  */
 if (status === 200) {
     for (const request of data.data) {
-        const { status } = request;
-
-        request.status = {
-            key: status,
-            description: states.de[status]
-        };
-
         log(request);
     }
 } else {

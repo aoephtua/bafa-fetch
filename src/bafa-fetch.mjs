@@ -67,6 +67,38 @@ const fetchJson = async (endpoint, credentials, data) => {
 };
 
 /**
+ * Attaches descriptions of request states by key and language.
+ * 
+ * @param {object} result The result object with data.
+ * @param {string} lang The language of states.
+ * @returns The result object.
+ */
+const attachRequestStatesByKey = (result, lang) => {
+    const data = result.data;
+
+    if (data && data.count) {
+        const values = states[lang] || states['en'];
+
+        const requests = data.data?.map(request => {
+            const { status } = request;
+
+            request.status = {
+                key: status,
+                description: values[status]
+            };
+
+            return request;
+        });
+
+        if (requests) {
+            result.data.data = requests;
+        }
+    }
+
+    return result;
+};
+
+/**
  * Gets list with requests by credentials and options.
  * 
  * @param {object} credentials The object with email and password or token.
@@ -74,10 +106,10 @@ const fetchJson = async (endpoint, credentials, data) => {
  * @returns Object with count and data.
  */
 const getRequests = async (credentials, options) => {
-    const { filter, paging, sort } = options || {};
+    const { filter, lang, paging, sort } = options || {};
     const { pageNumber, pageSize } = paging || {};
 
-    return fetchJson('antraege/search', credentials, {
+    const result = await fetchJson('antraege/search', credentials, {
         'role': 'ANTRAGSTELLER',
         'antragsdatumFrom': null,
         'antragsdatumTo': null,
@@ -87,6 +119,8 @@ const getRequests = async (credentials, options) => {
         'pageNumber': pageNumber || 0,
         'pageSize': pageSize || 10
     });
+
+    return attachRequestStatesByKey(result, lang);
 };
 
 /**
