@@ -4,7 +4,7 @@
 import { getRequests } from './bafa-fetch.mjs';
 
 /**
- * Ouputs message to the console.
+ * Outputs message to the console.
  */
 const log = console.log;
 
