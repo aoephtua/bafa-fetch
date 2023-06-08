@@ -1,0 +1,19 @@
+{
+  "name": "bafa-fetch",
+  "version": "1.0.0",
+  "description": "Node.js library to fetch requests of BAFA Portal",
+  "type": "module",
+  "main": "./src/bafa-fetch.mjs",
+  "scripts": {
+    "example": "node ./src/example.mjs"
+  },
+  "author": "Thorsten A. Weintz",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:aoephtua/bafa-fetch.git"
+  },
+  "keywords": [
+    "BAFA Portal"
+  ],
+  "license": "MIT"
+}
