@@ -4,7 +4,7 @@
 import { getRequests } from './bafa-fetch.mjs';
 
 /**
- * Ouputs message to the web console.
+ * Ouputs message to the console.
  */
 const log = console.log;
 
@@ -20,7 +20,7 @@ const { data, status, error } = await getRequests({
 
 /**
  * Validates HTTP status, iterates over requests and sets status descriptions.
- * Otherwise outputs error message.
+ * Otherwise outputs error message or HTTP status.
  */
 if (status === 200) {
     for (const request of data.data) {
