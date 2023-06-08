@@ -27,7 +27,7 @@ const getToken = () => new Date().getTime() + '';
  * Fetches JSON result by executing POST request.
  * 
  * @param {string} endpoint The endpoint path.
- * @param {object} credentials The object with email and password.
+ * @param {object} credentials The object with email and password or token.
  * @param {object} data The data to be sent as the request body.
  * @returns Object with JSON result.
  */
@@ -40,7 +40,7 @@ const fetchJson = async (endpoint, credentials, data) => {
         };
     }
 
-    const auth = getAuth(credentials);
+    const auth = credentials.token || getAuth(credentials);
     const token = getToken();
 
     try {
@@ -69,7 +69,7 @@ const fetchJson = async (endpoint, credentials, data) => {
 /**
  * Gets list with requests by credentials and options.
  * 
- * @param {object} credentials The object with email and password.
+ * @param {object} credentials The object with email and password or token.
  * @param {object} options The optional object with additional options.
  * @returns Object with count and data.
  */
@@ -93,6 +93,7 @@ const getRequests = async (credentials, options) => {
  * Exports object with constants and functions.
  */
 export {
+    getAuth,
     getRequests,
     states
 };
