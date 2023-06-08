@@ -15,7 +15,7 @@ Using npm:
 Once the package is installed, you can import the function:
 
 ```javascript
-import { getRequests } from './bafa-fetch.mjs';
+import { getRequests } from 'bafa-fetch';
 ```
 
 ## Usage
