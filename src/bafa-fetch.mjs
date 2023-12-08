@@ -9,7 +9,7 @@ import states from './bafa-request-states.mjs';
 const apiBaseUrl = 'https://fms.portal.bafa.de/BafaUserPortal/portal';
 
 /**
- * Gets authentiation token with Base64-encoded ASCII string by credentials.
+ * Gets authentication token with Base64-encoded ASCII string by credentials.
  * 
  * @param {object} credentials The object with email and password.
  * @returns String with authentication token.
